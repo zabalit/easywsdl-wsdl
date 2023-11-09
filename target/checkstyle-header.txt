@@ -1,0 +1,28 @@
+^#!
+^<\?xml.*>$
+^\W*Copyright \(c\) ((\d\d\d\d-)?\d\d\d\d .*, )?(\d\d\d\d-)?2018 Linagora$
+^\W*$
+^\W*Redistribution and use in source and binary forms, with or without modification,$
+^\W*are permitted provided that the following conditions are met:$
+^\W*$
+^\W*1. Redistributions of source code must retain the above copyright notice, this$
+^\W*list of conditions and the following disclaimer.$
+^\W*$
+^\W*2. Redistributions in binary form must reproduce the above copyright notice,$
+^\W*this list of conditions and the following disclaimer in the documentation$
+^\W*and/or other materials provided with the distribution.$
+^\W*$
+^\W*3. Neither the name of the Linagora nor the names of its contributors$
+^\W*may be used to endorse or promote products derived from this software without$
+^\W*specific prior written permission.$
+^\W*$
+^\W*THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND$
+^\W*ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED$
+^\W*WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.$
+^\W*IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,$
+^\W*INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES \(INCLUDING,$
+^\W*BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,$
+^\W*DATA, OR PROFITS; OR BUSINESS INTERRUPTION\) HOWEVER CAUSED AND ON ANY THEORY OF$
+^\W*LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT \(INCLUDING NEGLIGENCE$
+^\W*OR OTHERWISE\) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED$
+^\W*OF THE POSSIBILITY OF SUCH DAMAGE.$

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:tns="http://wetter.t-online.de:80/soap.php"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	targetNamespace="http://wetter.t-online.de:80/soap.php">
+	<types>
+		<xsd:schema
+			targetNamespace="http://wetter.t-online.de:80/soap.php">
+			<xsd:import
+				namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+			<xsd:complexType name="ArrayOfLocation">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="Location[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="Location">
+				<xsd:all>
+					<xsd:element name="code_uni" type="xsd:string" />
+					<xsd:element name="longitude" type="xsd:float" />
+					<xsd:element name="latitude" type="xsd:float" />
+					<xsd:element name="location" type="xsd:string" />
+					<xsd:element name="location_roman"
+						type="xsd:string" />
+					<xsd:element name="zip" type="xsd:string" />
+					<xsd:element name="country_fk" type="xsd:string" />
+				</xsd:all>
+			</xsd:complexType>
+		</xsd:schema>
+	</types>
+	<message name="searchLocationByZIPRequest">
+		<part name="searchstring" type="xsd:string" />
+	</message>
+	<message name="searchLocationByZIPResponse">
+		<part name="result" type="tns:ArrayOfLocation" />
+	</message>
+	<message name="searchLocationByCarRegistrationRequest">
+		<part name="searchstring" type="xsd:string" />
+	</message>
+	<message name="searchLocationByCarRegistrationResponse">
+		<part name="result" type="tns:ArrayOfLocation" />
+	</message>
+	<message name="searchLocationByNameRequest">
+		<part name="searchstring" type="xsd:string" />
+		<part name="limit" type="xsd:string" />
+	</message>
+	<message name="searchLocationByNameResponse">
+		<part name="result" type="tns:ArrayOfLocation" />
+	</message>
+	<message name="searchLocationByAnyStringDERequest">
+		<part name="searchstring" type="xsd:string" />
+	</message>
+	<message name="searchLocationByAnyStringDEResponse">
+		<part name="result" type="tns:ArrayOfLocation" />
+	</message>
+	<message name="pingTestRequest"></message>
+	<message name="pingTestResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+	<message name="getVersionInfoRequest"></message>
+	<message name="getVersionInfoResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+	<portType name="toi-wetterPortType">
+		<operation name="searchLocationByZIP">
+			<input message="tns:searchLocationByZIPRequest" />
+			<output message="tns:searchLocationByZIPResponse" />
+		</operation>
+		<operation name="searchLocationByCarRegistration">
+			<input message="tns:searchLocationByCarRegistrationRequest" />
+			<output
+				message="tns:searchLocationByCarRegistrationResponse" />
+		</operation>
+		<operation name="searchLocationByName">
+			<input message="tns:searchLocationByNameRequest" />
+			<output message="tns:searchLocationByNameResponse" />
+		</operation>
+		<operation name="searchLocationByAnyStringDE">
+			<input message="tns:searchLocationByAnyStringDERequest" />
+			<output message="tns:searchLocationByAnyStringDEResponse" />
+		</operation>
+		<operation name="pingTest">
+			<documentation>
+				Simple method for testing; returns date/time in RFC
+				format
+			</documentation>
+			<input message="tns:pingTestRequest" />
+			<output message="tns:pingTestResponse" />
+		</operation>
+		<operation name="getVersionInfo">
+			<documentation>
+				Returns version tag of soap interface
+			</documentation>
+			<input message="tns:getVersionInfoRequest" />
+			<output message="tns:getVersionInfoResponse" />
+		</operation>
+	</portType>
+	<binding name="toi-wetterBinding" type="tns:toi-wetterPortType">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="searchLocationByZIP">
+			<soap:operation
+				soapAction="http://wetter.t-online.de/soap.php/searchLocationByZIP"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="searchLocationByCarRegistration">
+			<soap:operation
+				soapAction="http://wetter.t-online.de/soap.php/searchLocationByCarRegistration"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="searchLocationByName">
+			<soap:operation
+				soapAction="http://wetter.t-online.de/soap.php/searchLocationByName"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="searchLocationByAnyStringDE">
+			<soap:operation
+				soapAction="http://wetter.t-online.de/soap.php/searchLocationByAnyStringDE"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="pingTest">
+			<soap:operation
+				soapAction="http://wetter.t-online.de/soap.php/pingTest"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="getVersionInfo">
+			<soap:operation
+				soapAction="http://wetter.t-online.de/soap.php/getVersionInfo"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded"
+					namespace="http://wetter.t-online.de:80/soap.php"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+	</binding>
+	<service name="toi-wetter">
+		<port name="toi-wetterPort" binding="tns:toi-wetterBinding">
+			<soap:address
+				location="http://wetter.t-online.de:80/soap.php" />
+		</port>
+	</service>
+</definitions>

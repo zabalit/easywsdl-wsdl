@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SearchArtistByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchArtistByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchArtistByNameResult" type="tns:ArrayOfArtistObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfArtistObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArtistObject" nillable="true" type="tns:ArtistObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArtistObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ArtistId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lastname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Firstname" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllNameBeginByKeyWord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllNameBeginByKeyWordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllNameBeginByKeyWordResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPersoVideosListByFlowName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FlowName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersoVideosListByFlowNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersoVideosListByFlowNameResult" type="tns:FluxKewego" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FluxKewego">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="link" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pubDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="cacheDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="isCached" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="videoCollection" type="tns:ArrayOfVideoKewego" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVideoKewego">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VideoKewego" nillable="true" type="tns:VideoKewego" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VideoKewego">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="link" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="rating" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="thumbnail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="duration" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pubDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="video" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="view" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="category" type="tns:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getAllInformationByArtistId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ArtistId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InfoArtistGenerale">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ArtistId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbFans" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbConcerts" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbVideos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbPictures" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbAlbums" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getAllInformationByArtistIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllInformationByArtistIdResult" type="tns:InfoArtistGenerale" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArtistExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="artistId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArtistExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ArtistExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfArtistObject" nillable="true" type="tns:ArrayOfArtistObject" />
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+      <s:element name="FluxKewego" nillable="true" type="tns:FluxKewego" />
+      <s:element name="InfoArtistGenerale" nillable="true" type="tns:InfoArtistGenerale" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SearchArtistByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchArtistByName" />
+  </wsdl:message>
+  <wsdl:message name="SearchArtistByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchArtistByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNameBeginByKeyWordSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllNameBeginByKeyWord" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNameBeginByKeyWordSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllNameBeginByKeyWordResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPersoVideosListByFlowNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersoVideosListByFlowName" />
+  </wsdl:message>
+  <wsdl:message name="GetPersoVideosListByFlowNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersoVideosListByFlowNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllInformationByArtistIdSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllInformationByArtistId" />
+  </wsdl:message>
+  <wsdl:message name="getAllInformationByArtistIdSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllInformationByArtistIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ArtistExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:ArtistExists" />
+  </wsdl:message>
+  <wsdl:message name="ArtistExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:ArtistExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchArtistByNameHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchArtistByNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfArtistObject" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNameBeginByKeyWordHttpPostIn">
+    <wsdl:part name="key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNameBeginByKeyWordHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetPersoVideosListByFlowNameHttpPostIn">
+    <wsdl:part name="FlowName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPersoVideosListByFlowNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:FluxKewego" />
+  </wsdl:message>
+  <wsdl:message name="getAllInformationByArtistIdHttpPostIn">
+    <wsdl:part name="ArtistId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllInformationByArtistIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:InfoArtistGenerale" />
+  </wsdl:message>
+  <wsdl:message name="ArtistExistsHttpPostIn">
+    <wsdl:part name="artistId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ArtistExistsHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="ArtistSoap">
+    <wsdl:operation name="SearchArtistByName">
+      <wsdl:input message="tns:SearchArtistByNameSoapIn" />
+      <wsdl:output message="tns:SearchArtistByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNameBeginByKeyWord">
+      <wsdl:input message="tns:GetAllNameBeginByKeyWordSoapIn" />
+      <wsdl:output message="tns:GetAllNameBeginByKeyWordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersoVideosListByFlowName">
+      <wsdl:input message="tns:GetPersoVideosListByFlowNameSoapIn" />
+      <wsdl:output message="tns:GetPersoVideosListByFlowNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllInformationByArtistId">
+      <wsdl:input message="tns:getAllInformationByArtistIdSoapIn" />
+      <wsdl:output message="tns:getAllInformationByArtistIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ArtistExists">
+      <wsdl:input message="tns:ArtistExistsSoapIn" />
+      <wsdl:output message="tns:ArtistExistsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ArtistHttpPost">
+    <wsdl:operation name="SearchArtistByName">
+      <wsdl:input message="tns:SearchArtistByNameHttpPostIn" />
+      <wsdl:output message="tns:SearchArtistByNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNameBeginByKeyWord">
+      <wsdl:input message="tns:GetAllNameBeginByKeyWordHttpPostIn" />
+      <wsdl:output message="tns:GetAllNameBeginByKeyWordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersoVideosListByFlowName">
+      <wsdl:input message="tns:GetPersoVideosListByFlowNameHttpPostIn" />
+      <wsdl:output message="tns:GetPersoVideosListByFlowNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllInformationByArtistId">
+      <wsdl:input message="tns:getAllInformationByArtistIdHttpPostIn" />
+      <wsdl:output message="tns:getAllInformationByArtistIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ArtistExists">
+      <wsdl:input message="tns:ArtistExistsHttpPostIn" />
+      <wsdl:output message="tns:ArtistExistsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ArtistSoap" type="tns:ArtistSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchArtistByName">
+      <soap:operation soapAction="http://tempuri.org/SearchArtistByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNameBeginByKeyWord">
+      <soap:operation soapAction="http://tempuri.org/GetAllNameBeginByKeyWord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersoVideosListByFlowName">
+      <soap:operation soapAction="http://tempuri.org/GetPersoVideosListByFlowName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllInformationByArtistId">
+      <soap:operation soapAction="http://tempuri.org/getAllInformationByArtistId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ArtistExists">
+      <soap:operation soapAction="http://tempuri.org/ArtistExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ArtistSoap12" type="tns:ArtistSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchArtistByName">
+      <soap12:operation soapAction="http://tempuri.org/SearchArtistByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNameBeginByKeyWord">
+      <soap12:operation soapAction="http://tempuri.org/GetAllNameBeginByKeyWord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersoVideosListByFlowName">
+      <soap12:operation soapAction="http://tempuri.org/GetPersoVideosListByFlowName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllInformationByArtistId">
+      <soap12:operation soapAction="http://tempuri.org/getAllInformationByArtistId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ArtistExists">
+      <soap12:operation soapAction="http://tempuri.org/ArtistExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ArtistHttpPost" type="tns:ArtistHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SearchArtistByName">
+      <http:operation location="/SearchArtistByName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNameBeginByKeyWord">
+      <http:operation location="/GetAllNameBeginByKeyWord" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersoVideosListByFlowName">
+      <http:operation location="/GetPersoVideosListByFlowName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllInformationByArtistId">
+      <http:operation location="/getAllInformationByArtistId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ArtistExists">
+      <http:operation location="/ArtistExists" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Artist">
+    <wsdl:port name="ArtistSoap" binding="tns:ArtistSoap">
+      <soap:address location="http://www.mytaratata.com/Artist.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ArtistSoap12" binding="tns:ArtistSoap12">
+      <soap12:address location="http://www.mytaratata.com/Artist.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ArtistHttpPost" binding="tns:ArtistHttpPost">
+      <http:address location="http://www.mytaratata.com/Artist.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

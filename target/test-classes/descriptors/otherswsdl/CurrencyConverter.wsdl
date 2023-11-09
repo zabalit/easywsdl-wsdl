@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://istec.de/CurrencyConverter/CurrencyConverter" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://istec.de/CurrencyConverter/CurrencyConverter" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://istec.de/CurrencyConverter/CurrencyConverter">
+      <s:element name="GetConversionRate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fromCurrency" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="toCurrency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConversionRateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetConversionRateResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConversionRateList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="timeStamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="countryList" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="currencySymbolList" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="usdConversionRateList" type="tns:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="double" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetConversionRateListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="timeStamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="countryList" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="currencySymbolList" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="usdConversionRateList" type="tns:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetConversionRateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConversionRate" />
+  </wsdl:message>
+  <wsdl:message name="GetConversionRateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConversionRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConversionRateListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConversionRateList" />
+  </wsdl:message>
+  <wsdl:message name="GetConversionRateListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConversionRateListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CurrencyConverterSoap">
+    <wsdl:operation name="GetConversionRate">
+      <wsdl:input message="tns:GetConversionRateSoapIn" />
+      <wsdl:output message="tns:GetConversionRateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConversionRateList">
+      <wsdl:input message="tns:GetConversionRateListSoapIn" />
+      <wsdl:output message="tns:GetConversionRateListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CurrencyConverterSoap" type="tns:CurrencyConverterSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="GetConversionRate">
+      <soap:operation soapAction="http://istec.de/CurrencyConverter/CurrencyConverter/GetConversionRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConversionRateList">
+      <soap:operation soapAction="http://istec.de/CurrencyConverter/CurrencyConverter/GetConversionRateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CurrencyConverter">
+    <wsdl:port name="CurrencyConverterSoap" binding="tns:CurrencyConverterSoap">
+      <soap:address location="http://www.petermeinl.de/CurrencyConverter/CurrencyConverter.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

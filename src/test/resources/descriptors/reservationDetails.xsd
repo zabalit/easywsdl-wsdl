@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"
+        targetNamespace="http://greath.example.com/2004/schemas/reservationDetails"
+        xmlns:tns="http://greath.example.com/2004/schemas/reservationDetails"
+        xmlns:wdetails="http://greath.example.com/2004/services/reservationDetails"
+        xmlns:wsdli="http://www.w3.org/ns/wsdl-instance"
+        xmlns:wsdlx="http://www.w3.org/ns/wsdl-extensions"
+        wsdli:wsdlLocation="http://greath.example.com/2004/services/reservationDetails reservationDetails.wsdl">
+
+        <element name="confirmationNumber" type="string" />
+
+        <element name="checkInDate" type="date" />
+
+        <element name="checkOutDate" type="date" />
+
+        <element name="reservationDetails">
+                <complexType>
+                        <sequence>
+                                <element ref="tns:confirmationNumber" />
+                                <element ref="tns:checkInDate" />
+                                <element ref="tns:checkOutDate" />
+                                <element name="roomType" type="string" />
+                                <element name="smoking" type="boolean" />
+                        </sequence>
+                </complexType>
+        </element>
+
+        <simpleType name="reservationDetailsSOAPEndpointType" wsdlx:binding="wdetails:reservationDetailsSOAPBinding">
+                <restriction base="anyURI"/>
+        </simpleType>
+
+        <element name="reservationDetailsSOAPEndpoint" type="tns:reservationDetailsSOAPEndpointType" />
+
+        <element name="reservationDetailsService">
+                <annotation>
+                        <documentation>
+                                This element contains references to the Reservation
+                                Details Web Service endpoints for this reservation.
+                        </documentation>
+                </annotation>
+                <complexType>
+                        <sequence>
+                                <element name="soap" type="tns:reservationDetailsSOAPEndpointType"/>
+                                <element name="secure-soap" type="tns:reservationDetailsSOAPEndpointType"/>
+                        </sequence>
+                </complexType>
+        </element>
+
+</schema>

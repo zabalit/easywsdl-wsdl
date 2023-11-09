@@ -1,0 +1,15 @@
+org/ow2/easywsdl/wsdl/test/wsdl/WSDLGenericWriterTest.class
+org/ow2/easywsdl/wsdl/test/util/XSLTConverter.class
+org/ow2/easywsdl/wsdl/test/wsdl/WSDLDescriptorTest.class
+org/ow2/easywsdl/wsdl/test/wsdl/MultiThreadTest.class
+org/ow2/easywsdl/wsdl/test/wsdl/WodenComparisonTest.class
+org/ow2/easywsdl/wsdl/test/wsdl/WSDLGeneratorTest.class
+org/ow2/easywsdl/wsdl/test/wsdl/WSDL4JComparisonTest.class
+org/ow2/easywsdl/wsdl/test/wsdl/WSDLGeneratorTest$2.class
+org/ow2/easywsdl/wsdl/test/wsdl/WSDLConverterTest.class
+org/ow2/easywsdl/wsdl/test/wsdl/WSDLList.class
+org/ow2/easywsdl/wsdl/test/wsdl/PerformancesTest.class
+org/ow2/easywsdl/wsdl/test/wsdl/WSDLGeneratorTest$1.class
+org/ow2/easywsdl/wsdl/test/wsdl/MultiThreadTest$ThreadWSDLReader.class
+org/ow2/easywsdl/wsdl/test/util/BaseWSDLSource.class
+org/ow2/easywsdl/wsdl/test/util/InputStreamForkerTest.class

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<wsdl:definitions name="MOBY_Central_Generated_WSDL"
+                targetNamespace="http://biomoby.org/Central.wsdl"
+                xmlns:tns="http://biomoby.org/Central.wsdl"
+                xmlns:xsd1="http://biomoby.org/CentralXSDs.xsd"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns="http://schemas.xmlsoap.org/wsdl/"
+                xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+                 
+  <wsdl:message name="CalculateAccurateMassInput">
+          <wsdl:part name="data" type="xsd:string"/>
+  </wsdl:message>
+
+  <wsdl:message name="CalculateAccurateMassOutput">
+          <wsdl:part name="body" type="xsd:string"/>
+  </wsdl:message>
+
+  <wsdl:portType name="CalculateAccurateMassPortType">
+          <wsdl:operation name="CalculateAccurateMass">
+                 <wsdl:input message="tns:CalculateAccurateMassInput"/>
+                 <wsdl:output message="tns:CalculateAccurateMassOutput"/>
+          </wsdl:operation>
+  </wsdl:portType>
+                
+  <wsdl:binding name="CalculateAccurateMassBinding" type="tns:CalculateAccurateMassPortType">
+          <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+          <wsdl:operation name="CalculateAccurateMass"><!-- in essense, this is the name of the subroutine that is called -->
+                 <wsdlsoap:operation soapAction='http://biomoby.org/#CalculateAccurateMass' style='rpc'/>
+                 <wsdl:input>
+                         <wsdlsoap:body use="encoded" namespace="http://biomoby.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+                 </wsdl:input>
+                 <wsdl:output>
+                         <wsdlsoap:body use="encoded" namespace="http://biomoby.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+                 </wsdl:output>
+          </wsdl:operation>
+  </wsdl:binding>
+                
+  <wsdl:service name="CalculateAccurateMassService">
+          <wsdl:documentation>Authority: CDK.SF.NET  -  Calculates the accurate mass of an metabolite.</wsdl:documentation>  <!-- service description goes here -->
+          <wsdl:port name="CalculateAccurateMassPort" binding="tns:CalculateAccurateMassBinding">
+                 <wsdlsoap:address location="http://d0100564.wur.nl/moby/"/>    <!-- URL to service scriptname -->
+          </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>
+
+

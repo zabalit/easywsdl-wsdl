@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://org.ow2.petals/demo/travelagency/agency/Artifacts" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://org.ow2.petals/demo/travelagency/airline/" xmlns:wsdl1="http://org.ow2.petals/demo/travelagency/hotel/" xmlns:wsdl2="http://org.ow2.petals/demo/travelagency/agency/" xmlns:car="http://org.ow2.petals/demo/travelagency/car/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="processArtifacts" targetNamespace="http://org.ow2.petals/demo/travelagency/agency/Artifacts">
+
+    <import location="car.wsdl" namespace="http://org.ow2.petals/demo/travelagency/car/"/>
+</definitions>

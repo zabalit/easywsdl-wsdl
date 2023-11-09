@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<wsdl:definitions name="CustomerSearchService"
+	targetNamespace="http://searchcustomer.services.stv.orange.com"
+	xmlns:ns1="http://searchcustomer.services.stv.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:ns2="http://petals.ow2.org" 
+	xmlns:xsi="http://http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://petals.ow2.org/schemaTest schemaTest.xsd"
+	xmlns:tns="http://searchcustomer.services.stv.orange.com" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:import location="CustomerSearchType.wsdl" namespace="http://type.searchcustomer.services.stv.orange.com">
+    </wsdl:import>
+	<wsdl:message name="OtherSystemException">
+		<wsdl:part element="ns1:OtherSystemException" name="OtherSystemException">
+		</wsdl:part>
+	</wsdl:message>
+	
+	<wsdl:message name="getCustomersResponse">
+		<wsdl:part element="ns1:getCustomersResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="SystemException">
+		<wsdl:part element="ns1:SystemException" name="SystemException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getCustomers">
+		<wsdl:part element="ns1:getCustomers" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="MandatoryParameterException">
+		<wsdl:part element="ns1:MandatoryParameterException" name="MandatoryParameterException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="OtherBusinessException">
+		<wsdl:part element="ns1:OtherBusinessException" name="OtherBusinessException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="MalformedParameterException">
+		<wsdl:part element="ns1:MalformedParameterException" name="MalformedParameterException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="CustomerSearchService">
+		<wsdl:operation name="getCustomers">
+			<wsdl:input message="ns1:getCustomers" name="getCustomers">
+			</wsdl:input>
+			<wsdl:output message="ns1:getCustomersResponse" name="getCustomersResponse">
+			</wsdl:output>
+			<wsdl:fault message="ns1:MandatoryParameterException"
+				name="MandatoryParameterException">
+			</wsdl:fault>
+			<wsdl:fault message="ns1:SystemException" name="SystemException">
+			</wsdl:fault>
+			<wsdl:fault message="ns1:OtherSystemException" name="OtherSystemException">
+			</wsdl:fault>
+			<wsdl:fault message="ns1:MalformedParameterException"
+				name="MalformedParameterException">
+			</wsdl:fault>
+			<wsdl:fault message="ns1:OtherBusinessException" name="OtherBusinessException">
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

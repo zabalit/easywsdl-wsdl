@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.aspalliance.com/chrisg/services" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.aspalliance.com/chrisg/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.aspalliance.com/chrisg/services">
+      <s:element name="DrawText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fontName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fontSize" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="fontColor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="alignment" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="backcolor" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="width" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="height" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DrawTextResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrawTextResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DrawTextSoapIn">
+    <wsdl:part name="parameters" element="tns:DrawText" />
+  </wsdl:message>
+  <wsdl:message name="DrawTextSoapOut">
+    <wsdl:part name="parameters" element="tns:DrawTextResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TextGraphicSoap">
+    <wsdl:operation name="DrawText">
+      <wsdl:input message="tns:DrawTextSoapIn" />
+      <wsdl:output message="tns:DrawTextSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TextGraphicSoap" type="tns:TextGraphicSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="DrawText">
+      <soap:operation soapAction="http://www.aspalliance.com/chrisg/services/DrawText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TextGraphic">
+    <wsdl:port name="TextGraphicSoap" binding="tns:TextGraphicSoap">
+      <soap:address location="http://authors.aspalliance.com/chrisg/tools/textgraphic.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

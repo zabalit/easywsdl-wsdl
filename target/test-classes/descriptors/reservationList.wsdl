@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<description xmlns="http://www.w3.org/ns/wsdl"
+	targetNamespace="http://greath.example.com/2004/services/reservationList"
+	xmlns:tns="http://greath.example.com/2004/services/reservationList"
+	xmlns:details="http://greath.example.com/2004/schemas/reservationDetails"
+	xmlns:list="http://greath.example.com/2004/schemas/reservationList"
+	xmlns:wsoap="http://www.w3.org/ns/wsdl/soap"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<documentation>
+		This document describes the GreatH Reservation List Web
+		services. Use this service to retrieve lists of reservations
+		based on a variety of search criteria.
+	</documentation>
+
+	<types>
+		<xs:import
+			namespace="http://greath.example.com/2004/schemas/reservationDetails"
+			schemaLocation="reservationDetails.xsd" />
+		<xs:import
+			namespace="http://greath.example.com/2004/schemas/reservationList"
+			schemaLocation="reservationList.xsd" />
+	</types>
+
+	<interface name="reservationListInterface">
+
+		<operation name="retrieve"
+			pattern="http://www.w3.org/ns/wsdl/in-out">
+			<input messageLabel="In" element="#none" />
+			<output messageLabel="Out" element="list:reservationList" />
+		</operation>
+
+		<operation name="retrieveByConfirmationNumber"
+			pattern="http://www.w3.org/ns/wsdl/in-out">
+			<input messageLabel="In"
+				element="details:confirmationNumber" />
+			<output messageLabel="Out" element="list:reservationList" />
+		</operation>
+
+		<operation name="retrieveByCheckInDate"
+			pattern="http://www.w3.org/ns/wsdl/in-out">
+			<input messageLabel="In" element="details:checkInDate" />
+			<output messageLabel="Out" element="list:reservationList" />
+		</operation>
+
+		<operation name="retrieveByCheckOutDate"
+			pattern="http://www.w3.org/ns/wsdl/in-out">
+			<input messageLabel="In" element="details:checkOutDate" />
+			<output messageLabel="Out" element="list:reservationList" />
+		</operation>
+	</interface>
+
+	<binding  name="reservationListSOAPBinding"
+		interface="tns:reservationListInterface"
+		type="http://www.w3.org/ns/wsdl/soap"
+		wsoap:protocol="http://www.w3.org/2003/05/soap/bindings/HTTP/">
+
+		<operation ref="tns:retrieve"
+			wsoap:mep="http://www.w3.org/2003/05/soap/mep/request-response" >
+			</operation>
+
+		<operation ref="tns:retrieveByConfirmationNumber"
+			wsoap:mep="http://www.w3.org/2003/05/soap/mep/request-response" />
+
+		<operation ref="tns:retrieveByCheckInDate"
+			wsoap:mep="http://www.w3.org/2003/05/soap/mep/request-response" />
+
+		<operation ref="tns:retrieveByCheckOutDate"
+			wsoap:mep="http://www.w3.org/2003/05/soap/mep/request-response" />
+
+	</binding>
+
+	<service name="reservationListService"
+		interface="tns:reservationListInterface">
+
+		<documentation>the reservationListEndpoint</documentation>
+
+		<endpoint name="reservationListEndpoint"
+			binding="tns:reservationListSOAPBinding"
+			address="http://greath.example.com/2004/reservationList" />
+
+		<documentation>the reservationListEndpoint</documentation>
+	</service>
+
+</description>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<wsdl:definitions name="myDef"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:tns="http://www.webservicex.net" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webservicex.net"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:types>
+		<s:schema elementFormDefault="qualified" targetNamespace="http://www.webservicex.net">
+			<s:element name="GetWeatherByZipCode">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="ZipCode"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetWeatherByZipCodeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="GetWeatherByZipCodeResult" type="tns:WeatherForecasts" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="WeatherForecasts">
+				<s:sequence>
+					<s:element minOccurs="1" maxOccurs="1" name="Latitude"
+						type="s:float" />
+					<s:element minOccurs="1" maxOccurs="1" name="Longitude"
+						type="s:float" />
+					<s:element minOccurs="1" maxOccurs="1" name="AllocationFactor"
+						type="s:float" />
+					<s:element minOccurs="0" maxOccurs="1" name="FipsCode"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="PlaceName"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="StateCode"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="Status"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="Details"
+						type="tns:ArrayOfWeatherData" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ArrayOfWeatherData">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="unbounded" name="WeatherData"
+						type="tns:WeatherData" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="WeatherData">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1" name="Day" type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="WeatherImage"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="MaxTemperatureF"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="MinTemperatureF"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="MaxTemperatureC"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="MinTemperatureC"
+						type="s:string" />
+				</s:sequence>
+			</s:complexType>
+			<s:element name="GetWeatherByPlaceName">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="PlaceName"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetWeatherByPlaceNameResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="GetWeatherByPlaceNameResult" type="tns:WeatherForecasts" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="WeatherForecasts" type="tns:WeatherForecasts" />
+		</s:schema>
+	</wsdl:types>
+	<wsdl:message name="GetWeatherByZipCodeIn">
+		<wsdl:part name="ZipCode" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetWeatherByZipCodeOut">
+		<wsdl:part name="Body" element="tns:WeatherForecasts" />
+	</wsdl:message>
+	<wsdl:portType name="WeatherForecastPortTypeSoap">
+		<wsdl:operation name="GetWeatherByZipCode">
+			<wsdl:input message="tns:GetWeatherByZipCodeIn" />
+			<wsdl:output message="tns:GetWeatherByZipCodeOut" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:portType name="WeatherForecastPortTypeHttpGet">
+		<wsdl:operation name="GetWeatherByZipCode">
+			<wsdl:input message="tns:GetWeatherByZipCodeIn" />
+			<wsdl:output message="tns:GetWeatherByZipCodeOut" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="WeatherForecastSoap" type="tns:WeatherForecastPortTypeSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<wsdl:operation name="GetWeatherByZipCode">
+			<soap:operation soapAction="http://www.webservicex.net/GetWeatherByZipCode"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="WeatherForecastHttpGet" type="tns:WeatherForecastPortTypeHttpGet">
+		<http:binding verb="GET" />
+		<wsdl:operation name="GetWeatherByZipCode">
+			<http:operation location="/GetWeatherByZipCode" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="WeatherForecast">
+		<wsdl:port name="WeatherForecastSoap" binding="tns:WeatherForecastSoap">
+			<soap:address location="http://www.webservicex.net/WeatherForecast.asmx" />
+		</wsdl:port>
+		<wsdl:port name="WeatherForecastHttpGet" binding="tns:WeatherForecastHttpGet">
+			<http:address location="http://www.webservicex.net/WeatherForecast.asmx" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

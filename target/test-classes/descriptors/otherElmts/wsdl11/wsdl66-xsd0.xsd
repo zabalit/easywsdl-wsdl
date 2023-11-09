@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<xs:schema elementFormDefault="qualified" targetNamespace="http://xmlsoap.org/Ping"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xmlsoap.org/Ping">
+	<xs:import
+		schemaLocation="wsdl66-xsd2.xsd"
+		namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<xs:element name="EchoBinaryAsString">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="array" nillable="true"
+					type="xs:base64Binary" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EchoBinaryAsStringResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="EchoBinaryAsStringResult"
+					nillable="true" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EchoStringAsBinary">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="s" nillable="true" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EchoStringAsBinaryResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="EchoStringAsBinaryResult"
+					nillable="true" type="xs:base64Binary" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EchoBinaryArrayAsStringArray">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="arrayOfArray" nillable="true"
+					type="q1:ArrayOfbase64Binary" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EchoBinaryArrayAsStringArrayResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0"
+					name="EchoBinaryArrayAsStringArrayResult" nillable="true"
+					type="q2:ArrayOfstring" xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EchoBinaryFieldAsString">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="s" nillable="true"
+					type="tns:MtomTestStruct" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MtomTestStruct">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Array" nillable="true"
+				type="xs:base64Binary" />
+			<xs:element minOccurs="0" name="Name" nillable="true"
+				type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MtomTestStruct" nillable="true"
+		type="tns:MtomTestStruct" />
+	<xs:element name="EchoBinaryFieldAsStringResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="EchoBinaryFieldAsStringResult"
+					nillable="true" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

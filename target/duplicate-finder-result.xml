@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<duplicate-finder-result version="1">
+    <project artifactId="easywsdl-wsdl" groupId="org.ow2.easywsdl" version="2.7.1" type="jar"/>
+    <configuration skip="false" quiet="false" checkCompileClasspath="true" checkRuntimeClasspath="true" checkTestClasspath="true" failBuildInCaseOfDifferentContentConflict="true" failBuildInCaseOfEqualContentConflict="false" failBuildInCaseOfConflict="false" printEqualFiles="true" preferLocal="true" includeBootClasspath="false" bootClasspathProperty="sun.boot.class.path" includePomProjects="false" useDefaultResourceIgnoreList="true" useDefaultClassIgnoreList="true" useResultFile="true" resultFileMinClasspathCount="2" resultFile="/datos/Proyectos/Clientes/04_ORACLE_ACS/EJIE/Desarrollo/easywsdl-wsdl/target/duplicate-finder-result.xml">
+        <ignoredResourcePatterns>
+            <ignoredResourcePattern>.*\.xjb$</ignoredResourcePattern>
+            <ignoredResourcePattern>(.*/)?catalog\.cat$</ignoredResourcePattern>
+            <ignoredResourcePattern>.*about\.html$</ignoredResourcePattern>
+        </ignoredResourcePatterns>
+        <ignoredClassPatterns/>
+        <conflictingDependencies>
+            <conflictingDependency currentProject="true" currentProjectIncluded="false" wildcard="false" bootClasspath="false">
+                <dependencies>
+                    <dependency artifactId="jbi-adapter-impl" groupId="org.ow2.petals" classifier="tests" type="jar"/>
+                    <dependency artifactId="easywsdl-wsdl" groupId="org.ow2.easywsdl" version="2.7.1" versionRange="2.7.1" type="jar"/>
+                </dependencies>
+                <packages/>
+                <classes/>
+                <resources>
+                    <resource>/jbi/jbi.xml</resource>
+                </resources>
+                <resourcePatterns/>
+            </conflictingDependency>
+            <conflictingDependency currentProject="true" currentProjectIncluded="false" wildcard="false" bootClasspath="false">
+                <dependencies>
+                    <dependency artifactId="petals-cdk-junit" groupId="org.ow2.petals" type="jar"/>
+                    <dependency artifactId="easywsdl-wsdl" groupId="org.ow2.easywsdl" version="2.7.1" versionRange="2.7.1" type="jar"/>
+                </dependencies>
+                <packages/>
+                <classes/>
+                <resources>
+                    <resource>/logging.properties</resource>
+                </resources>
+                <resourcePatterns/>
+            </conflictingDependency>
+        </conflictingDependencies>
+        <ignoredDependencies/>
+    </configuration>
+    <results>
+        <result name="compile" conflictState="no-conflict" failed="false">
+            <conflicts/>
+            <ignoredResourcePatterns>
+                <ignoredResourcePattern>^META-INF/.*</ignoredResourcePattern>
+                <ignoredResourcePattern>^OSGI-INF/.*</ignoredResourcePattern>
+                <ignoredResourcePattern>^licenses/.*</ignoredResourcePattern>
+                <ignoredResourcePattern>.*license(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*notice(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*readme(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*third-party(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*package\.html$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*overview\.html$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*\.xjb$</ignoredResourcePattern>
+                <ignoredResourcePattern>(.*/)?catalog\.cat$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*about\.html$</ignoredResourcePattern>
+            </ignoredResourcePatterns>
+            <ignoredDirectoryPatterns>
+                <ignoredDirectoryPattern>^.git$</ignoredDirectoryPattern>
+                <ignoredDirectoryPattern>^.svn$</ignoredDirectoryPattern>
+                <ignoredDirectoryPattern>^.hg$</ignoredDirectoryPattern>
+                <ignoredDirectoryPattern>^.bzr$</ignoredDirectoryPattern>
+            </ignoredDirectoryPatterns>
+            <ignoredClassPatterns>
+                <ignoredClassPattern>.*\$.*</ignoredClassPattern>
+            </ignoredClassPatterns>
+            <classpathElements type="classes"/>
+            <classpathElements type="resources"/>
+        </result>
+        <result name="runtime" conflictState="no-conflict" failed="false">
+            <conflicts/>
+            <ignoredResourcePatterns>
+                <ignoredResourcePattern>^META-INF/.*</ignoredResourcePattern>
+                <ignoredResourcePattern>^OSGI-INF/.*</ignoredResourcePattern>
+                <ignoredResourcePattern>^licenses/.*</ignoredResourcePattern>
+                <ignoredResourcePattern>.*license(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*notice(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*readme(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*third-party(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*package\.html$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*overview\.html$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*\.xjb$</ignoredResourcePattern>
+                <ignoredResourcePattern>(.*/)?catalog\.cat$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*about\.html$</ignoredResourcePattern>
+            </ignoredResourcePatterns>
+            <ignoredDirectoryPatterns>
+                <ignoredDirectoryPattern>^.git$</ignoredDirectoryPattern>
+                <ignoredDirectoryPattern>^.svn$</ignoredDirectoryPattern>
+                <ignoredDirectoryPattern>^.hg$</ignoredDirectoryPattern>
+                <ignoredDirectoryPattern>^.bzr$</ignoredDirectoryPattern>
+            </ignoredDirectoryPatterns>
+            <ignoredClassPatterns>
+                <ignoredClassPattern>.*\$.*</ignoredClassPattern>
+            </ignoredClassPatterns>
+            <classpathElements type="classes"/>
+            <classpathElements type="resources"/>
+        </result>
+        <result name="test" conflictState="no-conflict" failed="false">
+            <conflicts/>
+            <ignoredResourcePatterns>
+                <ignoredResourcePattern>^META-INF/.*</ignoredResourcePattern>
+                <ignoredResourcePattern>^OSGI-INF/.*</ignoredResourcePattern>
+                <ignoredResourcePattern>^licenses/.*</ignoredResourcePattern>
+                <ignoredResourcePattern>.*license(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*notice(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*readme(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*third-party(\.txt)?$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*package\.html$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*overview\.html$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*\.xjb$</ignoredResourcePattern>
+                <ignoredResourcePattern>(.*/)?catalog\.cat$</ignoredResourcePattern>
+                <ignoredResourcePattern>.*about\.html$</ignoredResourcePattern>
+            </ignoredResourcePatterns>
+            <ignoredDirectoryPatterns>
+                <ignoredDirectoryPattern>^.git$</ignoredDirectoryPattern>
+                <ignoredDirectoryPattern>^.svn$</ignoredDirectoryPattern>
+                <ignoredDirectoryPattern>^.hg$</ignoredDirectoryPattern>
+                <ignoredDirectoryPattern>^.bzr$</ignoredDirectoryPattern>
+            </ignoredDirectoryPatterns>
+            <ignoredClassPatterns>
+                <ignoredClassPattern>.*\$.*</ignoredClassPattern>
+            </ignoredClassPatterns>
+            <classpathElements type="classes"/>
+            <classpathElements type="resources"/>
+        </result>
+    </results>
+</duplicate-finder-result>

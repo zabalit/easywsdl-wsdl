@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2008-2012 EBM WebSourcing, 2012-2018 Linagora
+
+ This program/library is free software: you can redistribute it and/or modify
+ it under the terms of the New BSD License (3-clause license).
+
+ This program/library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the New BSD License (3-clause license)
+ for more details.
+
+ You should have received a copy of the New BSD License (3-clause license)
+ along with this program/library; If not, see http://directory.fsf.org/wiki/License:BSD_3Clause/
+ for the New BSD License (3-clause license).
+-->
+<wsdl:definitions targetNamespace="http://xmlsoap.org/Ping"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+	xmlns:tns="http://xmlsoap.org/Ping" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://xmlsoap.org/Ping/Imports">
+			<xsd:import
+				schemaLocation="wsdl66-xsd0.xsd"
+				namespace="http://xmlsoap.org/Ping" />
+			<xsd:import
+				schemaLocation="wsdl66-xsd1.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+			<xsd:import
+				schemaLocation="wsdl66-xsd2.xsd"
+				namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="IMtomTestLite_EchoBinaryAsString_InputMessage">
+		<wsdl:part name="parameters" element="tns:EchoBinaryAsString" />
+	</wsdl:message>
+	<wsdl:message name="IMtomTestLite_EchoBinaryAsString_OutputMessage">
+		<wsdl:part name="parameters" element="tns:EchoBinaryAsStringResponse" />
+	</wsdl:message>
+	<wsdl:message name="IMtomTestLite_EchoStringAsBinary_InputMessage">
+		<wsdl:part name="parameters" element="tns:EchoStringAsBinary" />
+	</wsdl:message>
+	<wsdl:message name="IMtomTestLite_EchoStringAsBinary_OutputMessage">
+		<wsdl:part name="parameters" element="tns:EchoStringAsBinaryResponse" />
+	</wsdl:message>
+	<wsdl:message name="IMtomTestLite_EchoBinaryArrayAsStringArray_InputMessage">
+		<wsdl:part name="parameters" element="tns:EchoBinaryArrayAsStringArray" />
+	</wsdl:message>
+	<wsdl:message
+		name="IMtomTestLite_EchoBinaryArrayAsStringArray_OutputMessage">
+		<wsdl:part name="parameters" element="tns:EchoBinaryArrayAsStringArrayResponse" />
+	</wsdl:message>
+	<wsdl:message name="IMtomTestLite_EchoBinaryFieldAsString_InputMessage">
+		<wsdl:part name="parameters" element="tns:EchoBinaryFieldAsString" />
+	</wsdl:message>
+	<wsdl:message name="IMtomTestLite_EchoBinaryFieldAsString_OutputMessage">
+		<wsdl:part name="parameters" element="tns:EchoBinaryFieldAsStringResponse" />
+	</wsdl:message>
+	<wsdl:portType name="IMtomTestLite">
+		<wsdl:operation name="EchoBinaryAsString">
+			<wsdl:input wsaw:Action="http://xmlsoap.org/echoBinaryAsString"
+				message="tns:IMtomTestLite_EchoBinaryAsString_InputMessage" />
+			<wsdl:output wsaw:Action="http://xmlsoap.org/echoBinaryAsStringResponse"
+				message="tns:IMtomTestLite_EchoBinaryAsString_OutputMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="EchoStringAsBinary">
+			<wsdl:input wsaw:Action="http://xmlsoap.org/EchoStringAsBinary"
+				message="tns:IMtomTestLite_EchoStringAsBinary_InputMessage" />
+			<wsdl:output wsaw:Action="http://xmlsoap.org/EchoStringAsBinaryResponse"
+				message="tns:IMtomTestLite_EchoStringAsBinary_OutputMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="EchoBinaryArrayAsStringArray">
+			<wsdl:input wsaw:Action="http://xmlsoap.org/EchoBinaryArrayAsStringArray"
+				message="tns:IMtomTestLite_EchoBinaryArrayAsStringArray_InputMessage" />
+			<wsdl:output
+				wsaw:Action="http://xmlsoap.org/EchoBinaryArrayAsStringArrayResponse"
+				message="tns:IMtomTestLite_EchoBinaryArrayAsStringArray_OutputMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="EchoBinaryFieldAsString">
+			<wsdl:input wsaw:Action="http://xmlsoap.org/Ping"
+				message="tns:IMtomTestLite_EchoBinaryFieldAsString_InputMessage" />
+			<wsdl:output wsaw:Action="http://xmlsoap.org/PingResponse"
+				message="tns:IMtomTestLite_EchoBinaryFieldAsString_OutputMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>
